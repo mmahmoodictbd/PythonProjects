@@ -33,6 +33,7 @@ sudo pip install scipy
 sudo pip install matplotlib
 sudo pip install -U scikit-learn
 sudo pip install pandas
+sudo pip install sklearn
 ```
 
 License
