@@ -28,12 +28,11 @@ sudo -H pip install --upgrade pip
 
 ##### Install popular modules:
 ```sh
-sudo pip install numpy
-sudo pip install scipy
-sudo pip install matplotlib
-sudo pip install -U scikit-learn
-sudo pip install pandas
-sudo pip install -U scikit-learn
+pip install numpy
+pip install scipy
+pip install matplotlib
+pip install -U scikit-learn
+pip install pandas
 ```
 
 License
