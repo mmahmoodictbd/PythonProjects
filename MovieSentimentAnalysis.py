@@ -8,10 +8,10 @@ class MovieSentimentAnalysis(object):
     def __init__(self):
 
         # keys and tokens from the Twitter Dev Console
-        consumer_key = 'ddacgOCMuZlhJJY4oVxEV0MKQ'
-        consumer_secret = 'z9apw9qrSrIwUIsPftHxCEyaWBlCSCkp7DpnaU7EpnCFSYG30A'
-        access_token = '863018473-JoVCOaAEhFLjLEBLtyy66Bi3i2uW56KA5xQsfIYq'
-        access_token_secret = 'FDOkhF19CEWearnOa9TOr09Jp4e0u4AYD06pbjqCk21QN'
+        consumer_key = 'dddacgOCMuZlhJJY4oVxEV0MKQ'
+        consumer_secret = 'zz9apw9qrSrIwUIsPftHxCEyaWBlCSCkp7DpnaU7EpnCFSYG30A'
+        access_token = '8863018473-JoVCOaAEhFLjLEBLtyy66Bi3i2uW56KA5xQsfIYq'
+        access_token_secret = 'FFDOkhF19CEWearnOa9TOr09Jp4e0u4AYD06pbjqCk21QN'
 
         # attempt authentication
         try:
