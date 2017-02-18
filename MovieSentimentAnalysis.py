@@ -1,20 +1,54 @@
+import re
 import tweepy
 from textblob import TextBlob
 
-# Step 1 - Insert your API keys
-consumer_key = 'CONSUMER_KEY_HERE'
-consumer_secret = 'CONSUMER_SECRET_HERE'
-access_token = 'ACCESS_TOKEN_HERE'
-access_token_secret = 'ACCESS_TOKEN_SECRET_HERE'
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
 
-# Step 2 - Search for your movie name on Twitter
-public_tweets = api.search('movie_name')
+class MovieSentimentAnalysis(object):
 
-# Step 3 - Define a threshold for each sentiment to classify each
-for tweet in public_tweets:
-    analysis = TextBlob(tweet.text)
-    print(analysis.sentiment)
+    def __init__(self):
 
+        # keys and tokens from the Twitter Dev Console
+        consumer_key = 'ddacgOCMuZlhJJY4oVxEV0MKQ'
+        consumer_secret = 'z9apw9qrSrIwUIsPftHxCEyaWBlCSCkp7DpnaU7EpnCFSYG30A'
+        access_token = '863018473-JoVCOaAEhFLjLEBLtyy66Bi3i2uW56KA5xQsfIYq'
+        access_token_secret = 'FDOkhF19CEWearnOa9TOr09Jp4e0u4AYD06pbjqCk21QN'
+
+        # attempt authentication
+        try:
+            # create OAuthHandler object
+            auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+            # set access token and secret
+            auth.set_access_token(access_token, access_token_secret)
+            # create tweepy API object to fetch tweets
+            self.api = tweepy.API(auth)
+        except:
+            print("Error: Authentication Failed")
+
+    def search_movie_tweets(self):
+
+        # Search for your movie name on Twitter
+        self.public_tweets = self.api.search(q='moana', count=200)
+
+    def analyze_tweets(self):
+
+        # Define a threshold for each sentiment to classify each
+        for tweet in self.public_tweets:
+            tweetText = self.clean_tweet(tweet.text)
+            analysis = TextBlob(tweetText)
+            print(tweetText)
+            print(analysis.sentiment)
+
+    def clean_tweet(self, tweet):
+
+        # Utility function to clean tweet text by removing links, special charactersusing simple regex statements.
+        return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t]) | (\w +:\ / \ / \S +)", " ", tweet).split())
+
+def main():
+
+    obj = MovieSentimentAnalysis()
+    obj.search_movie_tweets()
+    obj.analyze_tweets()
+
+
+if __name__ == "__main__":
+    main()
